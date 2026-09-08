@@ -8,6 +8,10 @@ helix-importer-ui
 *.bak
 .idea
 
+# Ignore aemcoder(EMA) generated files.
+.migration/*
+
+
 # Ensure these files are tracked
 !CLAUDE.md
 !AGENTS.md
