@@ -8,8 +8,11 @@ export default function decorate(block) {
     while (row.firstElementChild) li.append(row.firstElementChild);
     [...li.children].forEach((div) => {
       if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-card-image';
-      else if (div.querySelector('a')) div.className = 'cards-card-cta';
-      else div.className = 'cards-card-body';
+      else if (div.querySelector('a')) {
+        div.className = 'cards-card-cta';
+        // guarantee a stylable CTA link, even if the author didn't bold/italicize it
+        div.querySelectorAll('a').forEach((a) => a.classList.add('cards-cta-link'));
+      } else div.className = 'cards-card-body';
     });
     // the last plain-text div (before the CTA) is the image description
     const bodyDivs = [...li.children].filter((div) => div.className === 'cards-card-body');

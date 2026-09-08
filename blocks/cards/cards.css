@@ -8,32 +8,76 @@
 }
 
 .cards > ul > li {
-  border: 1px solid #dadada;
-  background-color: beige;
+  border: 1px solid #e3e1c8;
+  border-radius: 12px;
+  background-color: #f2f0d8;
+  padding: 32px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 /* push the CTA button to the bottom of the card */
-.cards .button-container {
+.cards .button-wrapper,
+.cards .cards-card-cta p:has(.cards-cta-link) {
   margin-top: auto;
 }
 
-.cards .cards-card-body {
-  margin: 16px;
+.cards .cards-card-body,
+.cards .cards-card-cta p {
+  margin: 0 0 24px;
+  color: #444;
+  line-height: 1.5;
+}
+
+.cards .cards-card-body h1,
+.cards .cards-card-body h2,
+.cards .cards-card-body h3,
+.cards .cards-card-cta h1,
+.cards .cards-card-cta h2,
+.cards .cards-card-cta h3 {
+  margin: 0 0 12px;
+  color: #111;
 }
 
 .cards .img-decription {
-  margin: 16px;
+  margin: 16px 0;
   font-size: 12px;
 }
 
 /* let the card content stretch so the CTA can sit at the bottom */
 .cards .cards-card-cta {
-  margin: 16px;
+  margin: 0;
   display: flex;
   flex: 1;
   flex-direction: column;
+}
+
+.cards .cards-card-cta .button-wrapper {
+  margin-bottom: 0;
+}
+
+.cards .cards-cta-link {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  border: 2px solid #4550e6;
+  border-radius: 2.4em;
+  padding: 0.5em 1.2em;
+  background-color: #4550e6;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.cards .cards-cta-link:hover,
+.cards .cards-cta-link:focus-visible {
+  background-color: #333ec2;
+  border-color: #333ec2;
+  color: #fff;
 }
 
 .cards .cards-card-image {
