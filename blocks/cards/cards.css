@@ -64,10 +64,10 @@
   align-items: center;
   justify-content: center;
   margin: 0;
-  border: 2px solid #4550e6;
+  border: 2px solid var(--link-color);
   border-radius: 2.4em;
   padding: 0.5em 1.2em;
-  background-color: #4550e6;
+  background-color: var(--link-color);
   color: #fff;
   font-weight: 700;
   text-decoration: none;
@@ -75,8 +75,8 @@
 
 .cards .cards-cta-link:hover,
 .cards .cards-cta-link:focus-visible {
-  background-color: #333ec2;
-  border-color: #333ec2;
+  background-color: var(--link-hover-color);
+  border-color: var(--link-hover-color);
   color: #fff;
 }
 
