@@ -31,10 +31,6 @@ header nav[aria-expanded='true'] {
 }
 
 @media (width >= 900px) {
-  header .nav-wrapper {
-    position: relative;
-  }
-
   header nav {
     display: flex;
     justify-content: space-between;
@@ -51,7 +47,8 @@ header nav[aria-expanded='true'] {
 
 header nav p {
   margin: 0;
-  line-height: 1;
+  
+  /* line-height: 1; BOILERPLATE DOESN'T HAVE a P tag in header, */
 }
 
 header nav a:any-link {
@@ -173,6 +170,26 @@ header nav .nav-sections ul {
   font-size: var(--body-font-size-s);
 }
 
+/* keep nav links as simple text, not button pills */
+header nav .nav-sections a.button,
+header nav .nav-sections a:any-link {
+  display: inline;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  background-color: transparent;
+  color: currentcolor;
+  font-size: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  text-decoration: none;
+}
+
+header nav .nav-sections a:hover {
+  text-decoration: underline;
+}
+
 header nav .nav-sections ul > li {
   font-weight: 500;
 }
@@ -224,6 +241,7 @@ header nav .nav-sections ul > li > ul > li {
 
   header nav .nav-sections ul {
     display: flex;
+    align-items: center;
     gap: 24px;
     margin: 0;
   }
@@ -247,6 +265,7 @@ header nav .nav-sections ul > li > ul > li {
     padding: 16px;
     background-color: var(--light-color);
     white-space: initial;
+    z-index: 1;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li > ul::before {
@@ -264,9 +283,127 @@ header nav .nav-sections ul > li > ul > li {
   header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
     padding: 8px 0;
   }
+
+  /* second-level items that own a third-level flyout */
+  header nav .nav-sections .nav-drop-sub {
+    position: relative;
+    padding-right: 16px;
+    cursor: pointer;
+  }
+
+  header nav .nav-sections .nav-drop-sub::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 14px;
+    right: 2px;
+    transform: rotate(-45deg);
+    width: 6px;
+    height: 6px;
+    border: 2px solid currentcolor;
+    border-width: 2px 2px 0 0;
+  }
+
+  /* rotate the caret to point left when the flyout opens on the left side */
+  header nav .nav-sections .nav-drop-sub.nav-drop-sub-left::after {
+    transform: rotate(135deg);
+    right: unset;
+    left: 2px;
+  }
+
+  header nav .nav-sections .nav-drop-sub.nav-drop-sub-left {
+    padding-right: 0;
+    padding-left: 16px;
+  }
+
+  /* third-level flyout: hidden by default */
+  /* stylelint-disable-next-line no-descending-specificity */
+  header nav .nav-sections .default-content-wrapper > ul > li > ul > li > ul {
+    display: none;
+    position: absolute;
+    top: -16px;
+    left: 100%;
+    width: 200px;
+    margin-left: 8px;
+    padding: 16px;
+    background-color: var(--light-color);
+    white-space: initial;
+    z-index: 2;
+  }
+
+  /* open the third-level flyout to the right by default */
+  header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-drop-sub[aria-expanded='true'] > ul {
+    display: block;
+  }
+
+  /* flip the flyout to the left when there isn't enough space on the right */
+  /* stylelint-disable-next-line no-descending-specificity */
+  header nav .nav-sections .nav-drop-sub.nav-drop-sub-left[aria-expanded='true'] > ul {
+    left: unset;
+    right: 100%;
+    margin-left: 0;
+    margin-right: 8px;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li > ul > li > ul > li {
+    padding: 8px 0;
+  }
 }
 
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
+}
+
+header nav .nav-tools .button {
+  margin: 0;
+  border: none;
+  padding: 0.5em;
+  background: none;
+  line-height: 0;
+}
+
+/* breadcrumbs */
+header .breadcrumbs {
+  display: none;
+  margin: auto;
+  max-width: 1248px;
+  height: var(--breadcrumbs-height);
+  padding: 0 24px;
+  font-size: var(--body-font-size-xs);
+  overflow: hidden;
+}
+
+header .breadcrumbs ol {
+  display: flex;
+  flex-flow: wrap;
+  list-style: none;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  gap: 1ch;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+header .breadcrumbs ol li {
+  padding: 0;
+  color: var(--dark-color);
+}
+
+header .breadcrumbs ol li:not(:last-child)::after {
+  content: '/';
+  padding-left: 1ch;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+header .breadcrumbs ol li[aria-current] {
+  color: var(--text-color);
+}
+
+@media (width >= 900px) {
+  header .breadcrumbs {
+    display: block;
+    max-width: 1264px;
+    padding: 0 32px;
+  }
 }

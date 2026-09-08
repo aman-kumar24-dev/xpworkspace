@@ -4,16 +4,36 @@
   padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: 24px;
+  grid-gap: 24px;
 }
 
 .cards > ul > li {
   border: 1px solid #dadada;
-  background-color: var(--background-color);
+  background-color: beige;
+  display: flex;
+  flex-direction: column;
+}
+
+/* push the CTA button to the bottom of the card */
+.cards .button-container {
+  margin-top: auto;
 }
 
 .cards .cards-card-body {
   margin: 16px;
+}
+
+.cards .img-decription {
+  margin: 16px;
+  font-size: 12px;
+}
+
+/* let the card content stretch so the CTA can sit at the bottom */
+.cards .cards-card-cta {
+  margin: 16px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 
 .cards .cards-card-image {
