@@ -24,6 +24,11 @@ footer p {
   margin: 0;
 }
 
+.footer .default-content-wrapper {
+  margin: 24px 0 0;
+  text-align: center;
+}
+
 footer ul {
   margin: 0;
   padding: 0;
