@@ -4,7 +4,7 @@
   padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  grid-gap: 24px;
+  gap: 24px;
 }
 
 .cards > ul > li {
@@ -17,17 +17,17 @@
   overflow: hidden;
 }
 
-/* push the CTA button to the bottom of the card */
-.cards .button-wrapper,
-.cards .cards-card-cta p:has(.cards-cta-link) {
-  margin-top: auto;
-}
-
 .cards .cards-card-body,
 .cards .cards-card-cta p {
   margin: 0 0 24px;
   color: #444;
   line-height: 1.5;
+}
+
+/* push the CTA button to the bottom of the card */
+.cards .button-wrapper,
+.cards .cards-card-cta p:has(.cards-cta-link) {
+  margin-top: auto;
 }
 
 .cards .cards-card-body h1,

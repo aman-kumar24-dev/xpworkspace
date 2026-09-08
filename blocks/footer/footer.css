@@ -45,8 +45,7 @@ footer a:any-link {
 
 @media (width >= 586px) and (width < 900px) {
   .columns.footer.columns-3-cols > div {
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     gap: 24px;
   }
 
